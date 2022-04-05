@@ -1,0 +1,47 @@
+@import '../../../assets/styles/variables.scss';
+
+.movie-card-container {
+	width: 470px;
+	height: 350px;
+	margin-right: 50px;
+	border-radius: 20px;
+	.movie-thumbnail-container {
+		width: 470px;
+		height: 240px;
+		position: relative;
+		.movie-thumbnail {
+			border-radius: 20px;
+		}
+		.movie-bookmark-icon-container {
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			padding: 10px;
+			background-color: $grey;
+			border-radius: 50%;
+		}
+	}
+	.movie-subtitle-container {
+		color: $grey;
+		display: flex;
+		width: 120px;
+		justify-content: space-between;
+		align-items: center;
+		margin: 10px 0;
+		.dot {
+			height: 5px;
+			width: 5px;
+			background-color: $grey;
+			border-radius: 50%;
+			display: inline-block;
+		}
+		span {
+			font-size: small;
+		}
+	}
+	.movie-title {
+		font-size: large;
+	}
+}

@@ -1,0 +1,10 @@
+@import '../../assets/styles/variables.scss';
+.home-container {
+	height: 100%;
+	color: $white;
+
+	.trending-cards-container {
+		display: flex;
+		overflow-x: auto;
+	}
+}

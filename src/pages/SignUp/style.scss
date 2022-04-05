@@ -1,0 +1,58 @@
+$darkBlue: #10141e;
+$semiDarkBlue: #161d2f;
+$greyishBlue: #5a698f;
+$red: #fc4747;
+
+.signup-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: $darkBlue;
+	.signup-form {
+		background-color: $semiDarkBlue;
+		display: flex;
+		flex-direction: column;
+		min-width: 50%;
+		border-radius: 20px;
+		padding: 20px 50px;
+		height: 373px;
+		color: white;
+		input {
+			border: none transparent;
+			border-bottom: 1px solid $greyishBlue;
+			height: 37px;
+			margin: 10px 0;
+			background-color: transparent;
+			color: white;
+			&:focus {
+				outline: transparent;
+			}
+		}
+		button {
+			margin: 20px 0;
+			padding: 20px;
+			background-color: $red;
+			border: none;
+			border-radius: 10px;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 1.5rem;
+			cursor: pointer;
+			&:hover {
+				filter: brightness(65%);
+			}
+		}
+	}
+	.no-account-text {
+		display: flex;
+		align-self: center;
+		.signup-link {
+			margin-left: 10px;
+			text-decoration: none;
+			color: $red;
+		}
+	}
+}
