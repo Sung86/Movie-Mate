@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables.scss';
+
+.bookmarks-container {
+	color: $white;
+	.bookmarks-cards-container {
+		display: grid;
+		grid-template-columns: repeat(4, auto);
+	}
+}

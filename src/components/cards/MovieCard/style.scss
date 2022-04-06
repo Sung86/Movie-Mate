@@ -21,6 +21,10 @@
 			padding: 10px;
 			background-color: $grey;
 			border-radius: 50%;
+			cursor: pointer;
+			&:hover {
+				filter: brightness(70%);
+			}
 		}
 	}
 	.movie-subtitle-container {

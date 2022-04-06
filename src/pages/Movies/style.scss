@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables.scss';
+
+.movie-container {
+	color: $white;
+	.movie-cards-container {
+		display: grid;
+		grid-template-columns: repeat(4, auto);
+	}
+}

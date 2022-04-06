@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables.scss';
+
+.tv-series-container {
+	color: $white;
+	.tv-series-cards-container {
+		display: grid;
+		grid-template-columns: repeat(4, auto);
+	}
+}

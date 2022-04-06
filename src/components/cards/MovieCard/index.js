@@ -1,15 +1,14 @@
 import './style.scss';
-import thumbnail from '../../../assets/thumbnails/beyond-earth/trending/large.jpg';
-import bookmarkIcon from '../../../assets/icon-bookmark-empty.svg';
+import bookmarkEmptyIcon from '../../../assets/icon-bookmark-empty.svg';
+import bookmarkFullIcon from '../../../assets/icon-bookmark-full.svg';
 const MovieCard = (props) => {
 	const year = props.year;
 	const category = props.category;
 	const rating = props.rating;
 	const title = props.title;
-	// const thumbnail = props.thumbnail;
-	// const thumbnail =
-	// 	'../../../assets/thumbnails/beyond-earth/trending/large.jpg';
-	// console.log(year, category, rating, title, thumbnail);
+	const isBookmarked = props.isBookmarked;
+	const thumbnail = props.thumbnail;
+
 	return (
 		<>
 			<div className="movie-card-container">
@@ -22,17 +21,22 @@ const MovieCard = (props) => {
 						height="100%"
 					/>
 					<div className="movie-bookmark-icon-container">
-						<img src={bookmarkIcon} alt="bookmark" width="100%" height="100%" />
+						<img
+							src={isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}
+							alt="bookmark"
+							width="100%"
+							height="100%"
+						/>
 					</div>
 				</div>
 				<div className="movie-subtitle-container">
-					<span>2019</span>
+					<span>{year}</span>
 					<div className="dot"></div>
-					<span>Movie</span>
+					<span>{category}</span>
 					<div className="dot"></div>
-					<span>PG</span>
+					<span>{rating}</span>
 				</div>
-				<span className="movie-title">Beyond Earth</span>
+				<span className="movie-title">{title}</span>
 			</div>
 		</>
 	);
