@@ -1,9 +1,5 @@
-@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
 
 .movie-container {
-	color: $white;
-	.movie-cards-container {
-		display: grid;
-		grid-template-columns: repeat(4, auto);
-	}
+	@include movieCardsLayout(movie);
 }

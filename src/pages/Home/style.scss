@@ -1,18 +1,12 @@
 @import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
 .home-container {
 	height: 100%;
-	color: $white;
 	.section-title {
 		font-size: 2rem;
 		letter-spacing: 3px;
 		margin: 30px 0;
 	}
-	.trending-cards-container {
-		display: flex;
-		overflow-x: auto;
-	}
-	.recommended-cards-container {
-		display: grid;
-		grid-template-columns: repeat(4, auto);
-	}
+	@include movieCardsLayout(trending);
+	@include movieCardsLayout(recommended);
 }

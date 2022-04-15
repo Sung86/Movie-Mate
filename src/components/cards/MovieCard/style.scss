@@ -1,13 +1,13 @@
 @import '../../../assets/styles/variables.scss';
 
 .movie-card-container {
-	width: 470px;
-	height: 350px;
 	margin-right: 50px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	border-radius: 20px;
+	height: 100%;
+	width: 100%;
 	.movie-thumbnail-container {
-		width: 470px;
-		height: 240px;
 		position: relative;
 		.movie-thumbnail {
 			border-radius: 20px;

@@ -2,7 +2,7 @@ import './style.scss';
 const Loading = () => {
 	return (
 		<>
-			<div className="loading-container"></div>
+			<div className="loading"></div>
 		</>
 	);
 };

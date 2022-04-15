@@ -1,9 +1,4 @@
-@import '../../assets/styles/variables.scss';
-
+@import '../../assets/styles/mixins.scss';
 .bookmarks-container {
-	color: $white;
-	.bookmarks-cards-container {
-		display: grid;
-		grid-template-columns: repeat(4, auto);
-	}
+	@include movieCardsLayout(bookmarks);
 }

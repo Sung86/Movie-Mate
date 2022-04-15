@@ -13,8 +13,8 @@ const App = () => {
 		<div className="app-container">
 			<Router>
 				<NavBar />
+				<SearchBar />
 				<div className="app-inner-container">
-					<SearchBar />
 					<Switch>
 						<Route exact path="/">
 							<Home />

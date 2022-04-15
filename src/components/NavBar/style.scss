@@ -2,19 +2,21 @@
 
 .navbar-container {
 	background-color: $semiDarkBlue;
-	padding: 50px 0;
-	width: 96px;
+	width: 95%;
+	height: 80px;
+	padding: 0 20px;
 	display: flex;
-	flex-direction: column;
+	align-self: center;
 	align-items: center;
+	justify-content: space-between;
 	border-radius: 25px;
-	min-height: 25rem;
-	height: 80%;
-	position: relative;
 	ul {
 		list-style-type: none;
-		margin-top: 50px;
+		display: flex;
+		justify-content: space-between;
 		padding: 0;
+		min-width: 200px;
+		max-width: 40%;
 		li {
 			margin: 20px 0;
 			&:hover {
@@ -24,8 +26,7 @@
 		}
 	}
 	.avatar-container {
-		position: absolute;
-		bottom: 30px;
+		right: 30px;
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;

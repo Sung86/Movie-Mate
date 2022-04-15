@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+@mixin mediaQuery($breakpoint) {
+	@each $bp, $size in $media {
+		@if $breakpoint == $bp {
+			@media screen and (min-width: $size) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin movieCardsLayout($category) {
+	color: $white;
+	.#{$category}-cards-container {
+		cursor: pointer;
+		display: grid;
+
+		grid-template-columns: repeat(1, 100%);
+		@include mediaQuery(sm) {
+			grid-template-columns: repeat(2, 50%);
+		}
+		@include mediaQuery(md) {
+			grid-template-columns: repeat(3, 33%);
+		}
+		@include mediaQuery(lg) {
+			grid-template-columns: repeat(4, 25%);
+		}
+		.#{$category}-card-container-wrapper {
+			margin: 10px;
+			height: 300px;
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
+}

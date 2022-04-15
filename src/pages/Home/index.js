@@ -29,15 +29,17 @@ const Home = () => {
 				<div className="trending-cards-container">
 					{trendings.length ? (
 						trendings.map((trending, index) => (
-							<MovieCard
-								key={index}
-								year={trending.year}
-								category={trending.category}
-								rating={trending.rating}
-								title={trending.title}
-								thumbnail={trending.thumbnail.trending.large}
-								isBookmarked={trending.isBookmarked}
-							/>
+							<div key={index} className="trending-card-container-wrapper">
+								<MovieCard
+									key={index}
+									year={trending.year}
+									category={trending.category}
+									rating={trending.rating}
+									title={trending.title}
+									thumbnail={trending.thumbnail.trending.large}
+									isBookmarked={trending.isBookmarked}
+								/>
+							</div>
 						))
 					) : (
 						<Loading />
@@ -48,15 +50,17 @@ const Home = () => {
 					<div className="recommended-cards-container">
 						{recommendeds.length ? (
 							recommendeds.map((recommended, index) => (
-								<MovieCard
-									key={index}
-									year={recommended.year}
-									category={recommended.category}
-									rating={recommended.rating}
-									title={recommended.title}
-									thumbnail={recommended.thumbnail.regular.large}
-									isBookmarked={recommended.isBookmarked}
-								/>
+								<div key={index} className="recommended-card-container-wrapper">
+									<MovieCard
+										key={index}
+										year={recommended.year}
+										category={recommended.category}
+										rating={recommended.rating}
+										title={recommended.title}
+										thumbnail={recommended.thumbnail.regular.large}
+										isBookmarked={recommended.isBookmarked}
+									/>
+								</div>
 							))
 						) : (
 							<Loading />

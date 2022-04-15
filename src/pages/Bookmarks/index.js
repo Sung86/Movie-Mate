@@ -28,15 +28,17 @@ const Bookmarks = () => {
 				<div className="bookmarks-cards-container">
 					{bookmarks.length ? (
 						bookmarks.map((trending, index) => (
-							<MovieCard
-								key={index}
-								year={trending.year}
-								category={trending.category}
-								rating={trending.rating}
-								title={trending.title}
-								thumbnail={trending.thumbnail.regular.large}
-								isBookmarked={true}
-							/>
+							<div key={index} className="bookmarks-card-container-wrapper">
+								<MovieCard
+									key={index}
+									year={trending.year}
+									category={trending.category}
+									rating={trending.rating}
+									title={trending.title}
+									thumbnail={trending.thumbnail.regular.large}
+									isBookmarked={true}
+								/>
+							</div>
 						))
 					) : (
 						<Loading />

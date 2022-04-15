@@ -3,14 +3,15 @@ import 'firebase/compat/database';
 
 const db = firebase.database().ref();
 export const getAllMovies = async () => {
-	const res = await db
+	return await db
 		.child('movies')
 		.get()
-		.then((snapshot) => (snapshot.exists() ? snapshot.val() : null))
-		.catch((error) => error);
-
-	return {
-		data: res,
-		status: false,
-	};
+		.then((snapshot) => ({
+			data: snapshot.exists() ? snapshot.val() : [],
+			status: true,
+		}))
+		.catch((error) => ({
+			data: error,
+			status: false,
+		}));
 };

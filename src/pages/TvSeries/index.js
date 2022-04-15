@@ -29,15 +29,17 @@ const TvSeries = () => {
 				<div className="tv-series-cards-container">
 					{tvSeries.length ? (
 						tvSeries.map((series, index) => (
-							<MovieCard
-								key={index}
-								year={series.year}
-								category={series.category}
-								rating={series.rating}
-								title={series.title}
-								thumbnail={series.thumbnail.regular.large}
-								isBookmarked={series.isBookmarked}
-							/>
+							<div key={index} className="tv-series-card-container-wrapper">
+								<MovieCard
+									key={index}
+									year={series.year}
+									category={series.category}
+									rating={series.rating}
+									title={series.title}
+									thumbnail={series.thumbnail.regular.large}
+									isBookmarked={series.isBookmarked}
+								/>
+							</div>
 						))
 					) : (
 						<Loading />

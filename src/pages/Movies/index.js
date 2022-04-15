@@ -18,6 +18,7 @@ const Movies = () => {
 			return;
 		}
 	}, [isMounted, movies]);
+
 	return (
 		<div>
 			<section className="movie-container">
@@ -25,15 +26,16 @@ const Movies = () => {
 				<div className="movie-cards-container">
 					{movies.length ? (
 						movies.map((movie, index) => (
-							<MovieCard
-								key={index}
-								year={movie.year}
-								category={movie.category}
-								rating={movie.rating}
-								title={movie.title}
-								thumbnail={movie.thumbnail.regular.large}
-								isBookmarked={movie.isBookmarked}
-							/>
+							<div key={index} className="movie-card-container-wrapper">
+								<MovieCard
+									year={movie.year}
+									category={movie.category}
+									rating={movie.rating}
+									title={movie.title}
+									thumbnail={movie.thumbnail.regular.large}
+									isBookmarked={movie.isBookmarked}
+								/>
+							</div>
 						))
 					) : (
 						<Loading />
