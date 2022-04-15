@@ -27,15 +27,15 @@ const Bookmarks = () => {
 				<h3>Bookmarks</h3>
 				<div className="bookmarks-cards-container">
 					{bookmarks.length ? (
-						bookmarks.map((trending, index) => (
+						bookmarks.map((bookmark, index) => (
 							<div key={index} className="bookmarks-card-container-wrapper">
 								<MovieCard
 									key={index}
-									year={trending.year}
-									category={trending.category}
-									rating={trending.rating}
-									title={trending.title}
-									thumbnail={trending.thumbnail.regular.large}
+									year={bookmark.year}
+									category={bookmark.category}
+									rating={bookmark.rating}
+									title={bookmark.title}
+									thumbnail={bookmark.thumbnail.regular.large}
 									isBookmarked={true}
 								/>
 							</div>
