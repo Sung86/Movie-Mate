@@ -15,7 +15,7 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 0;
-		min-width: 200px;
+		min-width: 150px;
 		max-width: 40%;
 		li {
 			margin: 20px 0;
@@ -32,5 +32,23 @@
 		border-radius: 50%;
 		display: inline-block;
 		border: 2px solid $white;
+	}
+	.sign-in-up-container {
+		margin-right: 20px;
+		width: 160px;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: $white;
+		font-size: 1.3rem;
+		font-weight: bold;
+		font-family: 'Source Serif Pro', serif;
+		div {
+			cursor: pointer;
+			&:hover {
+				color: rgb(0, 255, 242);
+			}
+		}
 	}
 }

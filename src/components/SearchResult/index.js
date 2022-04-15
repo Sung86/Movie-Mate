@@ -26,7 +26,7 @@ const SearchResult = ({ search }) => {
 		}
 
 		setResults(movies.filter((movie) => searchMovies(movie)));
-	}, [isMounted, movies, results]);
+	}, [isMounted, search]);
 	return (
 		<div>
 			<section className="search-result-container">

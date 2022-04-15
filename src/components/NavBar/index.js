@@ -5,8 +5,9 @@ import moviesIcon from '../../assets/icon-nav-movies.svg';
 import tvSeriesIcon from '../../assets/icon-nav-tv-series.svg';
 import bookmarkIcon from '../../assets/icon-nav-bookmark.svg';
 import avatar from '../../assets/image-avatar.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 const NavBar = () => {
+	const history = useHistory();
 	return (
 		<>
 			<div className="navbar-container">
@@ -35,9 +36,13 @@ const NavBar = () => {
 						</Link>
 					</li>
 				</ul>
-				<div className="avatar-container">
-					<img src={avatar} alt="avatar" width="100%" height="100%" />
+				<div className="sign-in-up-container">
+					<div onClick={() => history.push('/signin')}>Sign In</div>
+					<div onClick={() => history.push('/signup')}>Sign Up</div>
 				</div>
+				{/* <div className="avatar-container">
+					<img src={avatar} alt="avatar" width="100%" height="100%" />
+				</div> */}
 			</div>
 		</>
 	);

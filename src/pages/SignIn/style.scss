@@ -1,11 +1,21 @@
 @import '../../assets/styles/variables.scss';
-.login-container {
+.signin-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
 	height: 100%;
 	background-color: $darkBlue;
-	.login-form {
+	position: fixed;
+	left: 0;
+	top: 0;
+	.logo-container {
+		width: 80px;
+		margin: 20px 0;
+	}
+
+	.signin-form {
 		background-color: $semiDarkBlue;
 		display: flex;
 		flex-direction: column;

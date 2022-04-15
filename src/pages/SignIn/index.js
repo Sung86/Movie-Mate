@@ -1,7 +1,8 @@
 import './style.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-const LogIn = () => {
+import logoIcon from '../../assets/logo.svg';
+const SignIn = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -9,15 +10,21 @@ const LogIn = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.table(email, password);
-		//temporary hard cord login details
+		//temporary hard cord signin details
 		if (email.trim() === 'bob@gmail.com' && password.trim() === 'bob123') {
 			history.push('/');
 		}
 	};
 	return (
-		<div className="login-container">
-			<form className="login-form" onSubmit={handleSubmit}>
-				<h1>Login</h1>
+		<div className="signin-container">
+			<Link to="/">
+				<div className="logo-container">
+					<img src={logoIcon} width="100%" height="100%" />
+				</div>
+			</Link>
+
+			<form className="signin-form" onSubmit={handleSubmit}>
+				<h1>Sign In</h1>
 				<input
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
@@ -30,7 +37,7 @@ const LogIn = () => {
 					type="password"
 					placeholder="Password"
 				/>
-				<button type="submit">Login to your account</button>
+				<button type="submit">Sign In to your account</button>
 				<span className="no-account-text">
 					Don't have an account?
 					<Link to="/signup" className="signup-link">
@@ -42,4 +49,4 @@ const LogIn = () => {
 	);
 };
 
-export default LogIn;
+export default SignIn;
