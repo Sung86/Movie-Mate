@@ -6,12 +6,12 @@ import tvSeriesIcon from '../../assets/icon-nav-tv-series.svg';
 import bookmarkIcon from '../../assets/icon-nav-bookmark.svg';
 import avatar from '../../assets/image-avatar.png';
 import { Link, useHistory } from 'react-router-dom';
-import { useEffect, useState, useContext, createContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalProvider';
 const NavBar = () => {
 	const history = useHistory();
 	const {
-		contextValue: {},
+		contextValue: { isSignIn },
 	} = useContext(GlobalContext);
 	const [path, setPath] = useState(window.location.pathname);
 	useEffect(() => {
@@ -48,13 +48,16 @@ const NavBar = () => {
 						</Link>
 					</li>
 				</ul>
-				<div className="sign-in-up-container">
-					<div onClick={() => history.push('/signin')}>Sign In</div>
-					<div onClick={() => history.push('/signup')}>Sign Up</div>
-				</div>
-				{/* <div className="avatar-container">
-					<img src={avatar} alt="avatar" width="100%" height="100%" />
-				</div> */}
+				{isSignIn ? (
+					<div className="avatar-container">
+						<img src={avatar} alt="avatar" width="100%" height="100%" />
+					</div>
+				) : (
+					<div className="sign-in-up-container">
+						<div onClick={() => history.push('/signin')}>Sign In</div>
+						<div onClick={() => history.push('/signup')}>Sign Up</div>
+					</div>
+				)}
 			</div>
 		</>
 	);

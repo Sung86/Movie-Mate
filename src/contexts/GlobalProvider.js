@@ -1,18 +1,18 @@
-import { useMemo, createContext } from 'react';
+import { useState, useMemo, createContext } from 'react';
 export const GlobalContext = createContext({});
 
-const initialState = {};
-
 const GlobalProvider = (props) => {
-	const state = () => initialState;
-	const {} = state();
+	const [user, setUser] = useState({});
+	const [isSignIn, setIsSignIn] = useState(false);
 
-	const contextValue = useMemo(() => ({}), []);
+	const contextValue = useMemo(() => ({ user, isSignIn }), [user, isSignIn]);
 
 	return (
 		<GlobalContext.Provider
 			value={{
 				contextValue,
+				setUser,
+				setIsSignIn,
 			}}
 		>
 			{props.children}
