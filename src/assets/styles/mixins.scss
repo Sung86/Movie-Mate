@@ -13,9 +13,7 @@
 @mixin movieCardsLayout($category) {
 	color: $white;
 	.#{$category}-cards-container {
-		cursor: pointer;
 		display: grid;
-
 		grid-template-columns: repeat(1, 100%);
 		@include mediaQuery(sm) {
 			grid-template-columns: repeat(2, 50%);

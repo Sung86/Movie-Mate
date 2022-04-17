@@ -4,17 +4,23 @@ import homeIcon from '../../assets/icon-nav-home.svg';
 import moviesIcon from '../../assets/icon-nav-movies.svg';
 import tvSeriesIcon from '../../assets/icon-nav-tv-series.svg';
 import bookmarkIcon from '../../assets/icon-nav-bookmark.svg';
-import avatar from '../../assets/image-avatar.png';
+import avatar from '../../assets/default-profile-pic.png';
+import signoutIcon from '../../assets/sign-out.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalProvider';
+import { signout } from '../../services/firebase/authentication';
 
 const NavBar = () => {
 	const history = useHistory();
 	const {
 		contextValue: { isSignIn, currentPath },
+		setIsSignIn,
 	} = useContext(GlobalContext);
-
+	const handleSignOut = async () => {
+		const res = await signout();
+		setIsSignIn(!res.status);
+	};
 	return (
 		<>
 			<div className="navbar-container">
@@ -54,11 +60,16 @@ const NavBar = () => {
 					</li>
 				</ul>
 				{isSignIn ? (
-					<div className="avatar-container">
-						<img src={avatar} alt="avatar" width="100%" height="100%" />
+					<div className="after-signin-container">
+						<div className="avatar-container">
+							<img src={avatar} alt="avatar" width="100%" height="100%" />
+						</div>
+						<div className="signout-container" onClick={handleSignOut}>
+							<img src={signoutIcon} alt="avatar" width="100%" height="100%" />
+						</div>
 					</div>
 				) : (
-					<div className="sign-in-up-container">
+					<div className="before-signin-container">
 						<div onClick={() => history.push('/signin')}>Sign In</div>
 						<div onClick={() => history.push('/signup')}>Sign Up</div>
 					</div>

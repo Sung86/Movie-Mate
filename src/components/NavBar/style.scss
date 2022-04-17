@@ -22,15 +22,26 @@
 			cursor: pointer;
 		}
 	}
-	.avatar-container {
-		right: 30px;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		display: inline-block;
-		border: 2px solid $white;
+	.after-signin-container {
+		width: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.avatar-container {
+			right: 30px;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: inline-block;
+			border: 2.5px solid $white;
+		}
+		.signout-container {
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+		}
 	}
-	.sign-in-up-container {
+	.before-signin-container {
 		margin-right: 20px;
 		width: 160px;
 		height: 100%;

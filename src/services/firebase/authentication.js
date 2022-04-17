@@ -14,3 +14,16 @@ export const signIn = async (email, password) => {
 			status: false,
 		}));
 };
+
+export const signout = async () => {
+	return await auth
+		.signOut()
+		.then(() => ({
+			data: null,
+			status: true,
+		}))
+		.catch((error) => ({
+			data: error,
+			status: false,
+		}));
+};
