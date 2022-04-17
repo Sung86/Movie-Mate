@@ -19,10 +19,7 @@
 		max-width: 40%;
 		li {
 			margin: 20px 0;
-			&:hover {
-				cursor: pointer;
-				filter: brightness(300%);
-			}
+			cursor: pointer;
 		}
 	}
 	.avatar-container {
@@ -51,4 +48,8 @@
 			}
 		}
 	}
+}
+
+.linkActiveEffect {
+	filter: brightness(300%);
 }

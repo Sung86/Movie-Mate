@@ -6,8 +6,20 @@ import tvSeriesIcon from '../../assets/icon-nav-tv-series.svg';
 import bookmarkIcon from '../../assets/icon-nav-bookmark.svg';
 import avatar from '../../assets/image-avatar.png';
 import { Link, useHistory } from 'react-router-dom';
+import { useEffect, useState, useContext, createContext } from 'react';
+import { GlobalContext } from '../../contexts/GlobalProvider';
 const NavBar = () => {
 	const history = useHistory();
+	const {
+		contextValue: {},
+	} = useContext(GlobalContext);
+	const [path, setPath] = useState(window.location.pathname);
+	useEffect(() => {
+		const unlisten = history.listen(() => {
+			setPath(window.location.pathname);
+		});
+		return () => unlisten();
+	}, [history, path]);
 	return (
 		<>
 			<div className="navbar-container">
@@ -15,22 +27,22 @@ const NavBar = () => {
 					<img src={logoIcon} alt="logo" />
 				</Link>
 				<ul>
-					<li>
+					<li className={`${path === '/' ? 'linkActiveEffect' : ''}`}>
 						<Link to="/">
 							<img src={homeIcon} alt="home" />
 						</Link>
 					</li>
-					<li>
+					<li className={`${path === '/movies' ? 'linkActiveEffect' : ''}`}>
 						<Link to="/movies">
 							<img src={moviesIcon} alt="movies" />
 						</Link>
 					</li>
-					<li>
+					<li className={`${path === '/tv-series' ? 'linkActiveEffect' : ''}`}>
 						<Link to="/tv-series">
 							<img src={tvSeriesIcon} alt="tv series" />
 						</Link>
 					</li>
-					<li>
+					<li className={`${path === '/bookmarks' ? 'linkActiveEffect' : ''}`}>
 						<Link to="/bookmarks">
 							<img src={bookmarkIcon} alt="bookmarks" />
 						</Link>
