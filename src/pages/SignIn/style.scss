@@ -13,6 +13,7 @@
 	.logo-container {
 		width: 80px;
 		margin: 20px 0;
+		cursor: pointer;
 	}
 
 	.signin-form {
@@ -44,21 +45,20 @@
 		button {
 			margin: 20px 0;
 			padding: 20px;
-			// background-color: $red;
 			border: none;
 			border-radius: 10px;
-			// color: $white;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
 			font-size: 1.5rem;
-			cursor: pointer;
+			cursor: not-allowed;
 			&:hover {
 				filter: brightness(65%);
 			}
 			&.--enable {
 				background-color: $red;
 				color: $white;
+				cursor: pointer;
 			}
 		}
 	}
@@ -69,6 +69,7 @@
 			margin-left: 10px;
 			text-decoration: none;
 			color: $red;
+			cursor: pointer;
 		}
 	}
 }

@@ -1,5 +1,5 @@
 import './style.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import logoIcon from '../../assets/logo.svg';
 import { signIn } from '../../services/firebase/authentication';
@@ -10,14 +10,14 @@ const SignIn = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [isSubmit, setIsSubmit] = useState(false);
+	const [isOnSubmit, setIsOnSubmit] = useState(false);
 	const [isError, setIsError] = useState(false);
-	const isDisableButton = isSubmit || email === '' || password === '';
+	const isDisableButton = isOnSubmit || email === '' || password === '';
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setIsError(false);
-		setIsSubmit(true);
+		setIsOnSubmit(true);
 
 		if (email.trim() !== '' && password.trim() !== '') {
 			const res = await signIn(email, password);
@@ -30,16 +30,17 @@ const SignIn = () => {
 				history.push('/');
 			}
 		}
-		setIsSubmit(false);
+		setIsOnSubmit(false);
 	};
 
 	return (
 		<div className="signin-container">
-			<Link to="/">
-				<div className="logo-container">
-					<img src={logoIcon} width="100%" height="100%" alt="logo" />
-				</div>
-			</Link>
+			<div
+				className="logo-container"
+				onClick={() => !isOnSubmit && history.push('/')}
+			>
+				<img src={logoIcon} width="100%" height="100%" alt="logo" />
+			</div>
 
 			<form className="signin-form" onSubmit={handleSubmit}>
 				<h1>Sign In</h1>
@@ -54,6 +55,7 @@ const SignIn = () => {
 					type="email"
 					placeholder="Email address"
 					required
+					disabled={isOnSubmit}
 				/>
 				<input
 					value={password}
@@ -61,6 +63,7 @@ const SignIn = () => {
 					type="password"
 					placeholder="Password"
 					required
+					disabled={isOnSubmit}
 				/>
 				<button
 					type="submit"
@@ -71,9 +74,12 @@ const SignIn = () => {
 				</button>
 				<span className="no-account-text">
 					Don't have an account?
-					<Link to="/signup" className="signup-link">
+					<div
+						onClick={() => !isOnSubmit && history.push('/signup')}
+						className="signup-link"
+					>
 						Sign Up
-					</Link>
+					</div>
 				</span>
 			</form>
 		</div>
