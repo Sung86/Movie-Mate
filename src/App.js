@@ -9,21 +9,27 @@ import NavBar from './components/NavBar';
 import SearchBar from './components/SearchBar';
 import SearchResult from './components/SearchResult';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-const App = () => {
-	const [search, setSearch] = useState('');
-	const [path, setPath] = useState(window.location.pathname);
+import { useEffect, useState, useContext } from 'react';
+import { GlobalContext } from './contexts/GlobalProvider';
 
+const App = () => {
+	const {
+		contextValue: { currentPath },
+		setCurrentPath,
+	} = useContext(GlobalContext);
+	const [search, setSearch] = useState('');
 	const history = useHistory();
+
 	useEffect(() => {
 		const unlisten = history.listen(() => {
-			setPath(window.location.pathname);
+			setCurrentPath(window.location.pathname);
 		});
 		return () => unlisten();
-	}, [history, path]);
+	}, [history, currentPath]);
+
 	return (
 		<div className="app-container">
-			{!['/signin', '/signup'].includes(path) && (
+			{!['/signin', '/signup'].includes(currentPath) && (
 				<div>
 					<NavBar />
 					<SearchBar search={setSearch} />
@@ -34,7 +40,7 @@ const App = () => {
 				{search.trim() !== '' ? (
 					<SearchResult search={search} />
 				) : (
-					<Switch onChange={() => console.log('helo')}>
+					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/signin" component={SignIn} />
 						<Route path="/signup" component={SignUp} />

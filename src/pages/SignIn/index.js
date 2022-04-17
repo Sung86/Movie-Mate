@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import logoIcon from '../../assets/logo.svg';
 import { signIn } from '../../services/firebase/authentication';
 import { GlobalContext } from '../../contexts/GlobalProvider';
+
 const SignIn = () => {
 	const { setUser, setIsSignIn } = useContext(GlobalContext);
 	const history = useHistory();
@@ -17,6 +18,7 @@ const SignIn = () => {
 		event.preventDefault();
 		setIsError(false);
 		setIsSubmit(true);
+
 		if (email.trim() !== '' && password.trim() !== '') {
 			const res = await signIn(email, password);
 			const user = res.data;
