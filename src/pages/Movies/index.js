@@ -18,7 +18,6 @@ const Movies = () => {
 			return;
 		}
 	}, [isMounted, movies]);
-
 	return (
 		<div>
 			<section className="movie-container">
@@ -28,6 +27,7 @@ const Movies = () => {
 						movies.map((movie, index) => (
 							<div key={index} className="movie-card-container-wrapper">
 								<MovieCard
+									id={index}
 									year={movie.year}
 									category={movie.category}
 									rating={movie.rating}

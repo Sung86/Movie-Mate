@@ -2,6 +2,7 @@ import firebase from '../../plugins/firebase';
 import 'firebase/compat/database';
 
 const db = firebase.database().ref();
+
 export const getAllMovies = async () => {
 	return await db
 		.child('movies')
@@ -14,4 +15,8 @@ export const getAllMovies = async () => {
 			data: error,
 			status: false,
 		}));
+};
+
+export const updateMovie = (movieId, data) => {
+	return db.child(`movies/${movieId}`).update(data);
 };

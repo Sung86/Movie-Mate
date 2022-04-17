@@ -1,14 +1,23 @@
 import './style.scss';
 import bookmarkEmptyIcon from '../../../assets/icon-bookmark-empty.svg';
 import bookmarkFullIcon from '../../../assets/icon-bookmark-full.svg';
-const MovieCard = (props) => {
-	const year = props.year;
-	const category = props.category;
-	const rating = props.rating;
-	const title = props.title;
-	const isBookmarked = props.isBookmarked;
-	const thumbnail = props.thumbnail;
+import { updateMovie } from '../../../services/firebase/realTimeDB';
+import { useState } from 'react';
+const MovieCard = ({
+	id,
+	year,
+	category,
+	rating,
+	title,
+	isBookmarked,
+	thumbnail,
+}) => {
+	const [isBookmark, setIsBookmark] = useState(isBookmarked);
 
+	const handleBookmark = () => {
+		updateMovie(id, { isBookmarked: !isBookmark });
+		setIsBookmark(!isBookmark);
+	};
 	return (
 		<>
 			<div className="movie-card-container">
@@ -20,9 +29,12 @@ const MovieCard = (props) => {
 						width="100%"
 						height="100%"
 					/>
-					<div className="movie-bookmark-icon-container">
+					<div
+						className="movie-bookmark-icon-container"
+						onClick={handleBookmark}
+					>
 						<img
-							src={isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}
+							src={isBookmark ? bookmarkFullIcon : bookmarkEmptyIcon}
 							alt="bookmark"
 							width="100%"
 							height="100%"
