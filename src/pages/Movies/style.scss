@@ -1,5 +1,10 @@
 @import '../../assets/styles/mixins.scss';
 
 .movie-container {
+	.section-title {
+		font-size: 2rem;
+		letter-spacing: 3px;
+		margin: 30px 0;
+	}
 	@include movieCardsLayout(movie);
 }

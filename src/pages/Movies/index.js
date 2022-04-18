@@ -21,7 +21,7 @@ const Movies = () => {
 	return (
 		<div>
 			<section className="movie-container">
-				<h3>Movies</h3>
+				<div className="section-title">Movies</div>
 				<div className="movie-cards-container">
 					{movies.length ? (
 						movies.map((movie) => (

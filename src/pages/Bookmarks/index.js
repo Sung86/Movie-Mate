@@ -33,7 +33,7 @@ const Bookmarks = () => {
 	return (
 		<div>
 			<section className="bookmarks-container">
-				<h3>Bookmarks</h3>
+				<div className="section-title">Bookmarks</div>
 				<div className="bookmarks-cards-container">
 					{bookmarks.length ? (
 						bookmarks.map((bookmark) => (

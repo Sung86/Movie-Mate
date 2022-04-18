@@ -25,7 +25,7 @@ const TvSeries = () => {
 	return (
 		<div>
 			<section className="tv-series-container">
-				<h3>TV Series</h3>
+				<div className="section-title">TV Series</div>
 				<div className="tv-series-cards-container">
 					{tvSeries.length ? (
 						tvSeries.map((series) => (
