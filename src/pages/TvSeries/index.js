@@ -28,10 +28,10 @@ const TvSeries = () => {
 				<h3>TV Series</h3>
 				<div className="tv-series-cards-container">
 					{tvSeries.length ? (
-						tvSeries.map((series, index) => (
-							<div key={index} className="tv-series-card-container-wrapper">
+						tvSeries.map((series) => (
+							<div key={series.id} className="tv-series-card-container-wrapper">
 								<MovieCard
-									key={index}
+									id={series.id}
 									year={series.year}
 									category={series.category}
 									rating={series.rating}

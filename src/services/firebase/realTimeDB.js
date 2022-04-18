@@ -7,10 +7,17 @@ export const getAllMovies = async () => {
 	return await db
 		.child('movies')
 		.get()
-		.then((snapshot) => ({
-			data: snapshot.exists() ? snapshot.val() : [],
-			status: true,
-		}))
+		.then((snapshot) => {
+			return {
+				data: snapshot.exists()
+					? snapshot.val().map((data, index) => ({
+							...data,
+							id: index,
+					  }))
+					: [],
+				status: true,
+			};
+		})
 		.catch((error) => ({
 			data: error,
 			status: false,

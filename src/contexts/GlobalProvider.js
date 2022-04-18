@@ -10,7 +10,6 @@ const GlobalProvider = (props) => {
 		() => ({ user, isSignIn, currentPath }),
 		[user, isSignIn, currentPath]
 	);
-
 	return (
 		<GlobalContext.Provider
 			value={{

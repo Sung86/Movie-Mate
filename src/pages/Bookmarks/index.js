@@ -19,24 +19,39 @@ const Bookmarks = () => {
 			loadMovies();
 			return;
 		}
-		setBookmarks(movies.filter((movie) => !movie.isBookmarked));
+		setBookmarks(movies.filter((movie) => movie.isBookmarked));
 	}, [isMounted, movies]);
+
+	const handleBookmarkChange = (index, e) => {
+		if (e === false) {
+			const newBookmarks = bookmarks.filter(
+				(bookmark) => bookmark.id !== index
+			);
+			setBookmarks(newBookmarks);
+		}
+	};
 	return (
 		<div>
 			<section className="bookmarks-container">
 				<h3>Bookmarks</h3>
 				<div className="bookmarks-cards-container">
 					{bookmarks.length ? (
-						bookmarks.map((bookmark, index) => (
-							<div key={index} className="bookmarks-card-container-wrapper">
+						bookmarks.map((bookmark) => (
+							<div
+								key={bookmark.id}
+								className="bookmarks-card-container-wrapper"
+							>
 								<MovieCard
-									key={index}
+									id={bookmark.id}
 									year={bookmark.year}
 									category={bookmark.category}
 									rating={bookmark.rating}
 									title={bookmark.title}
 									thumbnail={bookmark.thumbnail.regular.large}
-									isBookmarked={true}
+									isBookmarked={bookmark.isBookmarked}
+									onChangeBookmarked={(e) =>
+										handleBookmarkChange(bookmark.id, e)
+									}
 								/>
 							</div>
 						))

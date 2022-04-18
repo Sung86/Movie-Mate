@@ -45,7 +45,7 @@ const SignUp = () => {
 		<div className="signup-container">
 			<Link to="/">
 				<div className="logo-container">
-					<img src={logoIcon} width="100%" height="100%" />
+					<img src={logoIcon} width="100%" height="100%" alt="logo" />
 				</div>
 			</Link>
 			<form className="signup-form" onSubmit={handleSubmit}>

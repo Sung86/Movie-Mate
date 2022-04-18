@@ -31,7 +31,7 @@ const Home = () => {
 						trendings.map((trending, index) => (
 							<div key={index} className="trending-card-container-wrapper">
 								<MovieCard
-									key={index}
+									id={trending.id}
 									year={trending.year}
 									category={trending.category}
 									rating={trending.rating}
@@ -49,10 +49,13 @@ const Home = () => {
 					<div className="section-title">Recommended for you</div>
 					<div className="recommended-cards-container">
 						{recommendeds.length ? (
-							recommendeds.map((recommended, index) => (
-								<div key={index} className="recommended-card-container-wrapper">
+							recommendeds.map((recommended) => (
+								<div
+									key={recommended.id}
+									className="recommended-card-container-wrapper"
+								>
 									<MovieCard
-										key={index}
+										id={recommended.id}
 										year={recommended.year}
 										category={recommended.category}
 										rating={recommended.rating}

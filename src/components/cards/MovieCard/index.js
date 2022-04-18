@@ -2,7 +2,9 @@ import './style.scss';
 import bookmarkEmptyIcon from '../../../assets/icon-bookmark-empty.svg';
 import bookmarkFullIcon from '../../../assets/icon-bookmark-full.svg';
 import { updateMovie } from '../../../services/firebase/realTimeDB';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { GlobalContext } from '../../../contexts/GlobalProvider';
+
 const MovieCard = ({
 	id,
 	year,
@@ -11,10 +13,14 @@ const MovieCard = ({
 	title,
 	isBookmarked,
 	thumbnail,
+	onChangeBookmarked,
 }) => {
 	const [isBookmark, setIsBookmark] = useState(isBookmarked);
-
+	const {
+		contextValue: { currentPath },
+	} = useContext(GlobalContext);
 	const handleBookmark = () => {
+		if (currentPath === '/bookmarks') onChangeBookmarked(!isBookmark);
 		updateMovie(id, { isBookmarked: !isBookmark });
 		setIsBookmark(!isBookmark);
 	};

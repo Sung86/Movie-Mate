@@ -24,10 +24,10 @@ const Movies = () => {
 				<h3>Movies</h3>
 				<div className="movie-cards-container">
 					{movies.length ? (
-						movies.map((movie, index) => (
-							<div key={index} className="movie-card-container-wrapper">
+						movies.map((movie) => (
+							<div key={movie.id} className="movie-card-container-wrapper">
 								<MovieCard
-									id={index}
+									id={movie.id}
 									year={movie.year}
 									category={movie.category}
 									rating={movie.rating}
