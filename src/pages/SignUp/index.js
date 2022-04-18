@@ -2,23 +2,44 @@ import './style.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import logoIcon from '../../assets/logo.svg';
+import { signUp, signOut } from '../../services/firebase/authentication';
+import { validateSignUp } from '../../utils/validations';
+
 const SignUp = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const [isOnSubmit, setIsOnSubmit] = useState(false);
+	const isDisableButton =
+		isOnSubmit || [email, password, confirmPassword].includes('');
+	const [emailErrors, setEmailErrors] = useState([]);
+	const [passwordErrors, setPasswordErrors] = useState([]);
+	const [confirmPasswordErrors, setConfirmPasswordErrors] = useState([]);
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(email, password, confirmPassword);
-		//temporary hard cord signup details
-		if (
-			email.trim() !== '' &&
-			password.trim() !== '' &&
-			confirmPassword.trim() !== ''
-		) {
-			history.push('/signin');
+		setIsOnSubmit(true);
+		setEmailErrors([]);
+		setPasswordErrors([]);
+		setConfirmPasswordErrors([]);
+
+		const { isValid, emailErrors, passwordErrors, confirmPasswordErrors } =
+			validateSignUp(email, password, confirmPassword);
+
+		if (isValid) {
+			const res = await signUp(email, password);
+			const isSignUp = res.status;
+			if (isSignUp) {
+				await signOut();
+				history.push('/signin');
+			}
+		} else {
+			setEmailErrors(emailErrors);
+			setPasswordErrors(passwordErrors);
+			setConfirmPasswordErrors(confirmPasswordErrors);
 		}
+		setIsOnSubmit(false);
 	};
 	return (
 		<div className="signup-container">
@@ -31,28 +52,61 @@ const SignUp = () => {
 				<h1>Sign Up</h1>
 				<input
 					value={email}
+					className={emailErrors.length ? '--error-input' : ''}
 					onChange={(e) => setEmail(e.target.value)}
 					type="email"
-					placeholder="Email address"
+					placeholder="Email Address"
+					required
+					disabled={isOnSubmit}
 				/>
+				<span className={`${emailErrors.length ? '' : '--hide'} error-message`}>
+					{emailErrors.join('. ')}
+				</span>
 				<input
 					value={password}
+					className={passwordErrors.length ? '--error-input' : ''}
 					onChange={(e) => setPassword(e.target.value)}
 					type="password"
 					placeholder="Password"
+					required
+					disabled={isOnSubmit}
 				/>
+				<span
+					className={`${passwordErrors.length ? '' : '--hide'} error-message`}
+				>
+					{passwordErrors.join('. ')}
+				</span>
 				<input
 					value={confirmPassword}
+					className={confirmPasswordErrors.length ? '--error-input' : ''}
 					onChange={(e) => setConfirmPassword(e.target.value)}
 					type="password"
 					placeholder="Confirm Password"
+					required
+					disabled={isOnSubmit}
 				/>
-				<button type="submit">Create an account</button>
+				<span
+					className={`${
+						confirmPasswordErrors.length ? '' : '--hide'
+					} error-message`}
+				>
+					{confirmPasswordErrors.join('. ')}
+				</span>
+				<button
+					type="submit"
+					disabled={isDisableButton}
+					className={isDisableButton ? '' : '--enable'}
+				>
+					Create an account
+				</button>
 				<span className="no-account-text">
 					Already have an account?
-					<Link to="/signin" className="signin-link">
+					<div
+						onClick={() => !isOnSubmit && history.push('/signin')}
+						className="signin-link"
+					>
 						Sign In
-					</Link>
+					</div>
 				</span>
 			</form>
 		</div>

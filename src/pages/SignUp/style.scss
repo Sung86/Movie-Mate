@@ -19,36 +19,52 @@
 		background-color: $semiDarkBlue;
 		display: flex;
 		flex-direction: column;
-		min-width: 50%;
+		min-width: 400px;
+		max-width: 700px;
 		border-radius: 20px;
 		padding: 20px 50px;
-		height: 373px;
-		color: white;
+		height: 400px;
+		color: $white;
 		input {
 			border: none transparent;
 			border-bottom: 1px solid $greyishBlue;
 			height: 37px;
-			margin: 10px 0;
+			margin-bottom: 5px;
 			background-color: transparent;
 			color: white;
+			font-size: large;
+			letter-spacing: 2px;
 			&:focus {
 				outline: transparent;
+			}
+			&.--error-input {
+				border-bottom-color: $red;
+			}
+		}
+		.error-message {
+			color: $red;
+			word-wrap: break-word;
+			&.--hide {
+				visibility: hidden;
 			}
 		}
 		button {
 			margin: 20px 0;
 			padding: 20px;
-			background-color: $red;
 			border: none;
 			border-radius: 10px;
-			color: white;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
 			font-size: 1.5rem;
-			cursor: pointer;
+			cursor: not-allowed;
 			&:hover {
 				filter: brightness(65%);
+			}
+			&.--enable {
+				background-color: $red;
+				color: $white;
+				cursor: pointer;
 			}
 		}
 	}

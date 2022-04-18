@@ -9,7 +9,7 @@ import signoutIcon from '../../assets/sign-out.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalProvider';
-import { signout } from '../../services/firebase/authentication';
+import { signOut } from '../../services/firebase/authentication';
 
 const NavBar = () => {
 	const history = useHistory();
@@ -18,7 +18,7 @@ const NavBar = () => {
 		setIsSignIn,
 	} = useContext(GlobalContext);
 	const handleSignOut = async () => {
-		const res = await signout();
+		const res = await signOut();
 		setIsSignIn(!res.status);
 	};
 	return (

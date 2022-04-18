@@ -14,8 +14,20 @@ export const signIn = async (email, password) => {
 			status: false,
 		}));
 };
+export const signUp = async (email, password) => {
+	return await auth
+		.createUserWithEmailAndPassword(email, password)
+		.then((userCredential) => ({
+			data: userCredential.user,
+			status: true,
+		}))
+		.catch((error) => ({
+			data: error,
+			status: false,
+		}));
+};
 
-export const signout = async () => {
+export const signOut = async () => {
 	return await auth
 		.signOut()
 		.then(() => ({
