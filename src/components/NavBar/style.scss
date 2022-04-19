@@ -1,22 +1,32 @@
 @import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
 
 .navbar-container {
 	background-color: $semiDarkBlue;
-	width: 95%;
 	height: 80px;
-	padding: 0 20px;
 	display: flex;
 	align-self: center;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	border-radius: 25px;
+	@include mediaQuery(sm) {
+		justify-content: space-between;
+	}
+	.logo-container {
+		display: none;
+		margin-left: 10px;
+		@include mediaQuery(sm) {
+			display: block;
+		}
+	}
 	ul {
 		list-style-type: none;
-		display: flex;
 		justify-content: space-between;
+		display: flex;
 		padding: 0;
 		min-width: 150px;
 		max-width: 40%;
+		margin: 0 20px;
 		li {
 			margin: 20px 0;
 			cursor: pointer;
@@ -45,7 +55,6 @@
 		margin-right: 20px;
 		width: 160px;
 		height: 100%;
-		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		color: $white;
@@ -58,6 +67,7 @@
 				color: rgb(0, 255, 242);
 			}
 		}
+		display: flex;
 	}
 }
 
