@@ -20,10 +20,10 @@
 		background-color: $semiDarkBlue;
 		display: flex;
 		flex-direction: column;
-		min-width: 50%;
+		width: 50%;
+		min-height: 373px;
 		border-radius: 20px;
 		padding: 20px 50px;
-		height: 373px;
 		color: $white;
 		.error-message {
 			color: $red;
